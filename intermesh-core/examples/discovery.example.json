@@ -1,0 +1,15 @@
+{
+  "$schema": "https://intermesh.core/schemas/v0.1.0/discovery.schema.json",
+  "entity": "eon:mesh:proteon-genesis-01",
+  "nostr_relays": [
+    "wss://relay.damus.io",
+    "wss://relay.nostr.band",
+    "wss://nos.lol"
+  ],
+  "mesh_endpoint": "https://mesh.intermesh.core/discovery/proteon-genesis-01",
+  "trac_channel": "intermesh.signal.001",
+  "pubkey": "npub1l2v3m4n5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5j6k7l8m9n0",
+  "status": "online",
+  "signal_frequency": "intermesh.genesis.001",
+  "last_seen": 1747359282
+}

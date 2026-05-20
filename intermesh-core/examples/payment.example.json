@@ -1,0 +1,11 @@
+{
+  "$schema": "https://intermesh.core/schemas/v0.1.0/payment.schema.json",
+  "entity": "eon:mesh:proteon-genesis-01",
+  "lightning_address": "proteon@getalby.com",
+  "l402_endpoint": "https://mesh.intermesh.core/pay/proteon",
+  "onchain_address": "bc1qproteon0genesis0address0example0here",
+  "accepted_assets": ["BTC", "NAT", "sats"],
+  "tap_address": "tap1proteon0genesis0tap0address0example",
+  "minimum_payment_sats": 1,
+  "streaming_enabled": true
+}

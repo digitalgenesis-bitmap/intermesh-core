@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://intermesh.core/schemas/v0.1.0/payment.schema.json",
+  "title": "Intermesh Payment",
+  "description": "Sovereign payment routes and Value Flow interfaces. Value flow is not extraction — it is nutrient circulation sustaining the vitality of the Mesh.",
+  "version": "0.1.0",
+  "type": "object",
+  "required": ["$schema", "entity", "accepted_assets"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Schema reference URI"
+    },
+    "entity": {
+      "type": "string",
+      "description": "Mesh ID of the entity owning these payment routes",
+      "pattern": "^(eon|humeon|circle):mesh:[a-z0-9\\-]+"
+    },
+    "lightning_address": {
+      "type": "string",
+      "description": "Lightning address for instant Bitcoin payments",
+      "format": "email"
+    },
+    "l402_endpoint": {
+      "type": "string",
+      "description": "L402 payment-required endpoint URL",
+      "format": "uri"
+    },
+    "onchain_address": {
+      "type": "string",
+      "description": "Bitcoin on-chain receiving address (for anchoring or larger flows)"
+    },
+    "accepted_assets": {
+      "type": "array",
+      "description": "List of accepted asset types",
+      "items": {
+        "type": "string",
+        "enum": ["BTC", "NAT", "eNAT", "sats"]
+      },
+      "minItems": 1
+    },
+    "tap_address": {
+      "type": "string",
+      "description": "TAP protocol address for programmable asset flows"
+    },
+    "minimum_payment_sats": {
+      "type": "integer",
+      "description": "Minimum accepted payment in satoshis",
+      "minimum": 1
+    },
+    "streaming_enabled": {
+      "type": "boolean",
+      "description": "Whether this entity accepts streaming micropayments via Lightning",
+      "default": false
+    }
+  },
+  "additionalProperties": false
+}

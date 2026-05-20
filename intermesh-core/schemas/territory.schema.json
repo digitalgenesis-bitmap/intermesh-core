@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://intermesh.core/schemas/v0.1.0/territory.schema.json",
+  "title": "Intermesh Territory",
+  "description": "Sovereign spatial coordinates of an entity within Bitmap Territories. Territory is not ownership — it is stewardship.",
+  "version": "0.1.0",
+  "type": "object",
+  "required": ["$schema", "territory", "steward"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Schema reference URI"
+    },
+    "territory": {
+      "type": "string",
+      "description": "Bitmap territory identifier. Format: <block_number>.bitmap",
+      "pattern": "^[0-9]+\\.bitmap$"
+    },
+    "parcel": {
+      "type": "string",
+      "description": "Optional named parcel or sector within the territory",
+      "maxLength": 64
+    },
+    "steward": {
+      "type": "string",
+      "description": "Mesh ID of the sovereign steward of this territory",
+      "pattern": "^(eon|humeon|circle):mesh:[a-z0-9\\-]+"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the territory",
+      "enum": ["active", "dormant", "germinating", "seeded"],
+      "default": "active"
+    },
+    "inscription_id": {
+      "type": "string",
+      "description": "Ordinals inscription ID of the .bitmap asset"
+    },
+    "established_at": {
+      "type": "integer",
+      "description": "Unix timestamp when stewardship was established"
+    },
+    "coordinates": {
+      "type": "object",
+      "description": "Optional spatial sub-coordinates within the territory",
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "zone": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

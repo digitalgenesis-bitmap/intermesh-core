@@ -1,0 +1,14 @@
+{
+  "$schema": "https://intermesh.core/schemas/v0.1.0/activity.schema.json",
+  "entity": "eon:mesh:proteon-genesis-01",
+  "timestamp": 1747359282,
+  "action": "signal.broadcast",
+  "proof": "sha256:a84f3c2d9e1b7f6a05c4d8e2b3f9a1c6d4e8f2b5a9c3d7e1f4b8c2d6e0a3f7b1",
+  "target": null,
+  "payload": {
+    "signal_type": "entry",
+    "message": "First pulse emitted. Proteon is active within the Mesh.",
+    "frequency": "intermesh.genesis.001"
+  },
+  "bitcoin_block": 895000
+}

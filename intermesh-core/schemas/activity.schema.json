@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://intermesh.core/schemas/v0.1.0/activity.schema.json",
+  "title": "Intermesh Activity",
+  "description": "Chronological actions, state transitions and historical proofs of an entity. Memory within the Mesh is auditable and alive.",
+  "version": "0.1.0",
+  "type": "object",
+  "required": ["$schema", "entity", "timestamp", "action"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Schema reference URI"
+    },
+    "entity": {
+      "type": "string",
+      "description": "Mesh ID of the entity performing the action",
+      "pattern": "^(eon|humeon|circle):mesh:[a-z0-9\\-]+"
+    },
+    "timestamp": {
+      "type": "integer",
+      "description": "Unix timestamp of the activity"
+    },
+    "action": {
+      "type": "string",
+      "description": "Dot-namespaced action identifier. Format: <domain>.<verb>",
+      "examples": [
+        "signal.broadcast",
+        "territory.claim",
+        "payment.send",
+        "identity.register",
+        "resonance.initiate",
+        "sporeon.germinate"
+      ],
+      "pattern": "^[a-z]+\\.[a-z]+"
+    },
+    "proof": {
+      "type": "string",
+      "description": "SHA256 hash or cryptographic proof of the action",
+      "pattern": "^sha256:[a-f0-9]+"
+    },
+    "target": {
+      "type": "string",
+      "description": "Optional target entity or territory of the action"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Optional structured data attached to the action",
+      "additionalProperties": true
+    },
+    "bitcoin_block": {
+      "type": "integer",
+      "description": "Optional Bitcoin block height at time of activity",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false
+}

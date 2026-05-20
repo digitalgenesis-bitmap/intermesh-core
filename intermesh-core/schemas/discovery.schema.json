@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://intermesh.core/schemas/v0.1.0/discovery.schema.json",
+  "title": "Intermesh Discovery",
+  "description": "Discovery and communication endpoints enabling resonance and coordination. Discovery is not surveillance — it is voluntary resonance between sovereign participants.",
+  "version": "0.1.0",
+  "type": "object",
+  "required": ["$schema", "entity"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Schema reference URI"
+    },
+    "entity": {
+      "type": "string",
+      "description": "Mesh ID of the discoverable entity",
+      "pattern": "^(eon|humeon|circle):mesh:[a-z0-9\\-]+"
+    },
+    "nostr_relays": {
+      "type": "array",
+      "description": "Nostr relay WebSocket endpoints for Signal propagation",
+      "items": {
+        "type": "string",
+        "pattern": "^wss://"
+      }
+    },
+    "mesh_endpoint": {
+      "type": "string",
+      "description": "Primary Intermesh coordination endpoint",
+      "format": "uri"
+    },
+    "trac_channel": {
+      "type": "string",
+      "description": "TRAC indexing channel identifier for discovery and routing"
+    },
+    "pubkey": {
+      "type": "string",
+      "description": "Nostr public key for direct encrypted communication"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current availability status of this entity",
+      "enum": ["online", "offline", "resonating", "dormant"],
+      "default": "online"
+    },
+    "signal_frequency": {
+      "type": "string",
+      "description": "Optional named frequency or channel this entity broadcasts on"
+    },
+    "last_seen": {
+      "type": "integer",
+      "description": "Unix timestamp of last known activity"
+    }
+  },
+  "additionalProperties": false
+}

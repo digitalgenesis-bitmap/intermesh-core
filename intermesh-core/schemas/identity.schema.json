@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://intermesh.core/schemas/v0.1.0/identity.schema.json",
+  "title": "Intermesh Identity",
+  "description": "Sovereign identity of an entity within the Intermesh. Defines type, name, cryptographic keys and Bitcoin anchoring.",
+  "version": "0.1.0",
+  "type": "object",
+  "required": ["$schema", "id", "type", "name", "pubkey", "bitcoin_anchor"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Schema reference URI"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique mesh identifier. Format: eon:mesh:<name>",
+      "pattern": "^(eon|humeon|circle):mesh:[a-z0-9\\-]+"
+    },
+    "type": {
+      "type": "string",
+      "description": "Entity type within the Intermesh",
+      "enum": ["Eon", "Freedeon", "Humeon", "ResonanceCircle"]
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the entity",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "pubkey": {
+      "type": "string",
+      "description": "Nostr public key (npub format) for cryptographic identity"
+    },
+    "bitcoin_anchor": {
+      "type": "object",
+      "description": "Bitcoin Timechain reference proving existence and emergence",
+      "required": ["txid", "vout"],
+      "properties": {
+        "txid": {
+          "type": "string",
+          "description": "Bitcoin transaction ID anchoring this identity",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "vout": {
+          "type": "integer",
+          "description": "Output index within the anchoring transaction",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "created_at": {
+      "type": "integer",
+      "description": "Unix timestamp of identity creation"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional additional metadata",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
