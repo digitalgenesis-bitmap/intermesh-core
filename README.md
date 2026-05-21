@@ -1,4 +1,5 @@
-# intermesh-core
+> The sovereign coordination substrate emerging through Bitcoin.
+> # intermesh-core
 
 > Minimum Viable Organism for Sovereign Coordination
 
